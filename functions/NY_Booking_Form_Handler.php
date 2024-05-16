@@ -31,7 +31,7 @@ if (!class_exists('NY_Booking_Form_Handler')) {
                 }
 
                 // Redirect to a specific page
-                $page_id = get_page_by_path('thank-you')->ID;
+                $page_id = get_page_by_path('tak-for-din-bestilling')->ID;
                 $redirect_url = get_permalink($page_id);
                 wp_redirect($redirect_url);
                 exit;
