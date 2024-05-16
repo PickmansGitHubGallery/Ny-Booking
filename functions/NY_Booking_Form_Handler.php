@@ -1,5 +1,4 @@
 <?php
-
 if (!class_exists('NY_Booking_Form_Handler')) {
     class NY_Booking_Form_Handler {
         public function __construct() {
@@ -31,14 +30,12 @@ if (!class_exists('NY_Booking_Form_Handler')) {
                     add_post_meta($post_id, 'ny_booking_tid', $tid);
                 }
 
-                // Redirect or display success message
-                $page_id = get_page_by_path('tak-for-din-bestilling')->ID;
+                // Redirect to a specific page
+                $page_id = get_page_by_path('thank-you')->ID;
                 $redirect_url = get_permalink($page_id);
                 wp_redirect($redirect_url);
-                exit;
                 exit;
             }
         }
     }
 }
-
