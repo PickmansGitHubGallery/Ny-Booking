@@ -9,7 +9,6 @@ if(!class_exists('NY_Booking_Post_Type')){
         add_action('init',[$this, 'create_post_type']);
         add_action('add_meta_boxes', [$this, 'add_meta_boxes']);
         add_action('save_post', [$this, 'save_post'], 10, 3);
-        add_action('add_meta_boxes', [$this, 'show_data_meta_box']);
       }
 
       public function create_post_type(){
@@ -63,10 +62,16 @@ if(!class_exists('NY_Booking_Post_Type')){
             $new_telefon = sanitize_text_field($_POST['ny_booking_telefon']);
             $old_behandling = get_post_meta($post_id, 'ny_booking_behandling', true);
             $new_behandling = sanitize_text_field($_POST['ny_booking_behandling']);
+            $old_dato = get_post_meta($post_id, 'ny_booking_dato', true);
+            $new_dato = sanitize_text_field($_POST['ny_booking_dato']);
+            $old_tid = get_post_meta($post_id, 'ny_booking_tid', true);
+            $new_tid = sanitize_text_field($_POST['ny_booking_tid']);
 
             update_post_meta($post_id, 'ny_booking_navn', $new_name, $old_name);
             update_post_meta($post_id, 'ny_booking_telefon', $new_telefon, $old_telefon);
             update_post_meta($post_id, 'ny_booking_behandling', $new_behandling, $old_behandling);
+            update_post_meta($post_id, 'ny_booking_dato', $new_dato, $old_dato);
+            update_post_meta($post_id, 'ny_booking_tid', $new_tid, $old_tid);
         }
 
       }

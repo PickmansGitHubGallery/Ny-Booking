@@ -32,13 +32,28 @@
 
         public static function deactivate(){
             flush_rewrite_rules();
+            unregister_post_type('ny-booking');
         }
         public static function uninstall(){
-            delete_option('rewrite_rules');
+            $posts = get_posts(
+                [
+                    'post_type' => 'ny-booking',
+                    'number_posts' => -1,
+                    'post_status' => 'any'
+                ]
+            );
+
+            foreach($posts as $post){
+                wp_delete_post($post->ID, true);
+            }
         }
     }
  }
 
  if(class_exists('NY_Booking')){
+    register_activation_hook(__FILE__, ['NY_Booking', 'activate']);
+    register_deactivation_hook(__FILE__, ['NY_Booking', 'deactivate']);
+    register_uninstall_hook(__FILE__, ['NY_Booking', 'uninstall']);
+
      $ny_booking = new NY_Booking();
  }

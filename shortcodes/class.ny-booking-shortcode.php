@@ -49,5 +49,4 @@ if(!class_exists('NY_Booking_Shortcode')){
   }
 }
 
-//new NY_Booking_Shortcode();
 
