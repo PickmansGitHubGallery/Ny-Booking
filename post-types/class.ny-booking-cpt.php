@@ -70,23 +70,6 @@ if(!class_exists('NY_Booking_Post_Type')){
         }
 
       }
-      public function show_data_meta_box(){
-        add_meta_box(
-          'ny_booking_data',
-          'Booking Data',
-          [$this, 'show_data'],
-          'ny-booking',
-          'side',
-          'default'
-        );
-      }
-      public function show_data($post_id){
-        $navn = get_post_meta(105, 'ny_booking_navn', true);
-        $telefon = get_post_meta(105, 'ny_booking_telefon', true);
-        $behandling = get_post_meta(105, 'ny_booking_behandling', true);
-
-        require_once NY_BOOKING_PLUGIN_PATH . 'views/ny-booking_data.php';
-      }
     
 }
 }

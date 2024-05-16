@@ -45,5 +45,35 @@
                 <option value="boerne_klip">Børne Klip</option>
             </select>
         </td>
+    </tr>
+    <tr>
+        <th>
+            <label for="ny_booking_dato">Dato</label>
+        </th>
+        <td>
+            <input 
+                type="date" 
+                name="ny_booking_dato" 
+                id="ny_booking_dato" 
+                class="regular-text dato-text"
+                value=""
+                required
+            >
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label for="ny_booking_tid">Tid</label>
+        </th>
+        <td>
+            <input 
+                type="time" 
+                name="ny_booking_tid" 
+                id="ny_booking_tid" 
+                class="regular-text tid-text"
+                value=""
+                required
+            >
+        </td>
     </tr>                              
 </table>

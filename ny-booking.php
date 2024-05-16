@@ -16,6 +16,9 @@
 
             require_once NY_BOOKING_PLUGIN_PATH . 'post-types/class.ny-booking-cpt.php';
             $NY_Booking_Post_Type = new NY_Booking_Post_Type();
+
+            require_once NY_BOOKING_PLUGIN_PATH . 'shortcodes/class.ny-booking-shortcode.php';
+            $NY_Booking_Shortcode = new NY_Booking_Shortcode();
         }
         public function define_constants(){
             define('NY_BOOKING_PLUGIN_URL', plugin_dir_url(__FILE__));
