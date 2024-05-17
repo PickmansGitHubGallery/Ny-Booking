@@ -1,0 +1,67 @@
+#ny-booking-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#ny-booking-form .form-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#ny-booking-form th {
+  text-align: left;
+  padding: 10px 0;
+}
+
+#ny-booking-form td {
+  padding: 10px 0;
+}
+
+#ny-booking-form input[type="text"],
+#ny-booking-form input[type="number"],
+#ny-booking-form input[type="date"],
+#ny-booking-form input[type="time"],
+#ny-booking-form select {
+  width: calc(100% - 10px);
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+#ny-booking-form .button-primary {
+  background-color: #0073aa;
+  border-color: #006799;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+#ny-booking-form .button-primary:hover {
+  background-color: #005a8e;
+  border-color: #004e7a;
+}
+
+#ny-booking-form label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+#ny-booking-form input:focus,
+#ny-booking-form select:focus {
+  border-color: #0073aa;
+  box-shadow: 0 0 5px rgba(0, 115, 170, 0.5);
+  outline: none;
+}

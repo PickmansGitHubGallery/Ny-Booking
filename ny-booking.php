@@ -25,7 +25,9 @@
 
             require_once NY_BOOKING_PLUGIN_PATH . 'functions/NY_Booking_Form_Handler.php';
             $NY_Booking_Form_Handler = new NY_Booking_Form_Handler();
+
         }
+        
 
 
         public function define_constants(){
@@ -34,7 +36,7 @@
             define('NY_BOOKING_PLUGIN_VERSION', '1.0.0');
         }
 
-        
+
         public static function activate(){
             update_option('rewrite_rules', '');
 

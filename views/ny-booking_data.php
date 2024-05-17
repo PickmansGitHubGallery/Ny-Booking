@@ -1,3 +1,42 @@
+<style>
+.booking-details {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center; /* Center the text */
+}
+
+.booking-details h2 {
+    margin-bottom: 10px;
+}
+
+.booking {
+    margin: 0 auto 20px; /* Center the booking div */
+    max-width: 600px; /* Limit the width of the booking div */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.booking p {
+    margin: 5px 0;
+}
+
+.booking p strong {
+    font-weight: bold;
+}
+
+#no-booking {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+</style>
 <?php
 if (!empty($bookings)) {
     echo '<div class="booking-details">';
@@ -17,6 +56,6 @@ if (!empty($bookings)) {
 
     echo '</div>';
 } else {
-    echo '<p>No booking details available.</p>';
+    echo '<p id="no-booking">No booking details available.</p>';
 }
 ?>

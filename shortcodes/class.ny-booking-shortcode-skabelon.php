@@ -15,5 +15,6 @@ if(!class_exists('NY_Booking_Shortcode_skabelon')){
             require_once NY_BOOKING_PLUGIN_PATH . 'views/ny-booking_skabelon.php';
             return ob_get_clean();
         }
+       
     }
 }
