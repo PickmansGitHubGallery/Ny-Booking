@@ -101,7 +101,7 @@
             $wpdb->query(
                 "DELETE FROM $wpdb->posts
                 WHERE post_type = 'page' 
-                AND post_name IN('vis-booking', 'book-her')"
+                AND post_name IN('vis-booking', 'book-her', 'tak-for-din-bestilling')"
             );
         }
     }
