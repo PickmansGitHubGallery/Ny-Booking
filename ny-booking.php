@@ -20,8 +20,8 @@
             require_once NY_BOOKING_PLUGIN_PATH . 'shortcodes/class.ny-booking-shortcode.php';
             $NY_Booking_Shortcode = new NY_Booking_Shortcode();
 
-            require_once NY_BOOKING_PLUGIN_PATH . 'shortcodes/class.ny-booking-shortcode-skabelon.php';
-            $NY_Booking_Shortcode_skabelon = new NY_Booking_Shortcode_skabelon();
+            require_once NY_BOOKING_PLUGIN_PATH . 'shortcodes/class.ny-booking-shortcode-booking-form.php';
+            $NY_Booking_Shortcode_booking_form = new NY_Booking_Shortcode_booking_form();
 
             require_once NY_BOOKING_PLUGIN_PATH . 'functions/NY_Booking_Form_Handler.php';
             $NY_Booking_Form_Handler = new NY_Booking_Form_Handler();
@@ -62,7 +62,7 @@
                     'post_status' => 'publish',
                     'post_type' => 'page',
                     'post_author' => $current_user->ID,
-                    'post_content' => '<!-- wp:shortcode -->[ny-booking-skabelon]<!-- /wp:shortcode -->'
+                    'post_content' => '<!-- wp:shortcode -->[ny-booking-form]<!-- /wp:shortcode -->'
                 ];
                 wp_insert_post($page);
             }
