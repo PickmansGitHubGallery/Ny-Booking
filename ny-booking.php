@@ -83,9 +83,17 @@
         public static function deactivate(){
             flush_rewrite_rules();
             unregister_post_type('ny-booking');
+
+            global $wpdb;
+
+            $wpdb->query(
+                "DELETE FROM $wpdb->posts
+                WHERE post_type = 'page' 
+                AND post_name IN('vis-booking', 'book-her', 'tak-for-din-bestilling')"
+            );
+
         }
         public static function uninstall(){
-            global $wpdb;
 
             $posts = get_posts(
                 [
@@ -98,11 +106,8 @@
             foreach($posts as $post){
                 wp_delete_post($post->ID, true);
             }
-            $wpdb->query(
-                "DELETE FROM $wpdb->posts
-                WHERE post_type = 'page' 
-                AND post_name IN('vis-booking', 'book-her', 'tak-for-din-bestilling')"
-            );
+            
+    
         }
     }
  }

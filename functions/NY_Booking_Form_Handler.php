@@ -1,4 +1,9 @@
 <?php
+
+if(!defined('ABSPATH')){
+    exit;
+}
+
 if (!class_exists('NY_Booking_Form_Handler')) {
     class NY_Booking_Form_Handler {
         public function __construct() {
