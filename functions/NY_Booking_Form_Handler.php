@@ -12,35 +12,52 @@ if (!class_exists('NY_Booking_Form_Handler')) {
 
         public function process_form() {
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ny_booking_navn'])) {
-                // Sanitize and validate input
+                
                 $navn = sanitize_text_field($_POST['ny_booking_navn']);
                 $telefon = sanitize_text_field($_POST['ny_booking_telefon']);
                 $behandling = sanitize_text_field($_POST['ny_booking_behandling']);
                 $dato = sanitize_text_field($_POST['ny_booking_dato']);
                 $tid = sanitize_text_field($_POST['ny_booking_tid']);
 
-                // Create a new post
+                
+                
                 $post_id = wp_insert_post([
                     'post_title' => $navn,
                     'post_type' => 'ny_booking',
                     'post_status' => 'publish'
                 ]);
 
-                // Add post meta
+                
                 if ($post_id) {
-                    add_post_meta($post_id, 'ny_booking_navn', $navn);
-                    add_post_meta($post_id, 'ny_booking_telefon', $telefon);
-                    add_post_meta($post_id, 'ny_booking_behandling', $behandling);
-                    add_post_meta($post_id, 'ny_booking_dato', $dato);
-                    add_post_meta($post_id, 'ny_booking_tid', $tid);
+                    global $wpdb;
+
+                    $meta_data = [
+                        'ny_booking_navn' => $navn,
+                        'ny_booking_telefon' => $telefon,
+                        'ny_booking_behandling' => $behandling,
+                        'ny_booking_dato' => $dato,
+                        'ny_booking_tid' => $tid
+                    ];
+
+                    foreach ($meta_data as $meta_key => $meta_value) {
+                        $wpdb->query(
+                            $wpdb->prepare(
+                                "INSERT INTO {$wpdb->postmeta} (post_id, meta_key, meta_value) VALUES (%d, %s, %s)",
+                                $post_id, $meta_key, $meta_value
+                            )
+                        );
+                    }
                 }
 
-                // Redirect to a specific page
+                
                 $page_id = get_page_by_path('tak-for-din-bestilling')->ID;
-                $redirect_url = get_permalink($page_id);
-                wp_redirect($redirect_url);
-                exit;
+                if ($page_id) {
+                    $redirect_url = get_permalink($page_id);
+                    wp_redirect($redirect_url);
+                    exit;
+                }
             }
         }
     }
 }
+
