@@ -50,14 +50,21 @@ if (!class_exists('NY_Booking_Form_Handler')) {
                 }
 
                 
-                $page_id = get_page_by_path('tak-for-din-bestilling')->ID;
-                if ($page_id) {
-                    $redirect_url = get_permalink($page_id);
-                    wp_redirect($redirect_url);
-                    exit;
-                }
+                $redirect_url = home_url('/?booking=success');
+                wp_redirect($redirect_url);
+                exit;
             }
         }
     }
 }
+add_action('wp_enqueue_scripts', function() {
+    wp_enqueue_script('booking-success', get_template_directory_uri() . '/js/booking-success.js', [], false, true);
+});
+
+//Tjekker om GET-variablen 'booking' er sat til 'success'. Hvis det er tilfældet, vises en alert-boks med beskeden "Tak for din bestilling!".
+add_action('wp_footer', function() {
+    if (isset($_GET['booking']) && $_GET['booking'] === 'success') {
+        echo '<script type="text/javascript">window.onload = function() { alert("Tak for din bestilling!"); };</script>';
+    }
+});
 
