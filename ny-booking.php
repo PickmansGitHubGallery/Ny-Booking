@@ -110,7 +110,59 @@
     
         }
     }
- }
+    function booking_menu(){
+        add_menu_page(
+          'Booking',
+          'Booking aftaler',
+          'manage_options',
+          'booking-menu',
+          'booking_menu_page',
+          'dashicons-calendar-alt',
+          4
+        );
+      }
+      add_action('admin_menu', 'booking_menu');
+      
+      function booking_menu_page(){
+            // Hent alle indlæg med meta_key 'ny_booking_navn'
+            global $wpdb;
+            $meta_key = 'ny_booking_navn';
+            $results = $wpdb->get_results( $wpdb->prepare(
+                "SELECT post_id, meta_value FROM $wpdb->postmeta WHERE meta_key = %s",
+                $meta_key
+            ), ARRAY_A);
+  
+            // Send dataene til visningsfilen
+            if ($results) {
+                // Forbereder data til visning
+                $bookings = [];
+                foreach ($results as $result) {
+                    $post_id = $result['post_id'];
+                    $navn = get_post_meta($post_id, 'ny_booking_navn', true);
+                    $telefon = get_post_meta($post_id, 'ny_booking_telefon', true);
+                    $behandling = get_post_meta($post_id, 'ny_booking_behandling', true);
+                    $dato = get_post_meta($post_id, 'ny_booking_dato', true);
+                    $tid = get_post_meta($post_id, 'ny_booking_tid', true);
+                    
+                    $bookings[] = [
+                        'navn' => $navn,
+                        'telefon' => $telefon,
+                        'behandling' => $behandling,
+                        'dato' => $dato,
+                        'tid' => $tid
+                    ];
+                }
+                usort($bookings, function($a, $b) {
+                    $dateA = strtotime($a['dato']);
+                    $dateB = strtotime($b['dato']);
+                    return $dateA - $dateB;
+                });
+                require_once NY_BOOKING_PLUGIN_PATH . 'views/ny-booking_data.php';
+            } else {
+                echo '<p>No booking details available.</p>';
+            }
+        }
+      }
 
  if(class_exists('NY_Booking')){
     register_activation_hook(__FILE__, ['NY_Booking', 'activate']);

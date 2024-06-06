@@ -40,7 +40,7 @@
 <?php
 if (!empty($bookings)) {
     echo '<div class="booking-details">';
-    echo '<h2>Booking Details</h2>';
+    echo '<h2>Booket Aftaler</h2>';
     
     foreach ($bookings as $booking) {
         if (isset($booking['navn'], $booking['telefon'], $booking['behandling'], $booking['dato'], $booking['tid'])) {
