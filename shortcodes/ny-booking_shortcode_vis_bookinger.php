@@ -4,8 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
   exit;
 }
 
-if(!class_exists('NY_Booking_Shortcode')){
-  class NY_Booking_Shortcode{
+if(!class_exists('Booking_Shortcode')){
+  class Booking_Shortcode{
       public function __construct(){
           add_shortcode('ny-booking', [$this, 'ny_booking_shortcode']);
       }
@@ -41,7 +41,7 @@ if(!class_exists('NY_Booking_Shortcode')){
                       'tid' => $tid
                   ];
               }
-              require_once NY_BOOKING_PLUGIN_PATH . 'views/ny-booking_data.php';
+              require_once NY_BOOKING_PLUGIN_PATH . 'views/ny-booking_vis_booking_view.php';
           } else {
               echo '<p>No booking details available.</p>';
           }

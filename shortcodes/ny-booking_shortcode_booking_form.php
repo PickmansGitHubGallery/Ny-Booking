@@ -3,8 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-if(!class_exists('NY_Booking_Shortcode_booking_form')){
-    class NY_Booking_Shortcode_booking_form{
+if(!class_exists('shortcode_booking_form')){
+    class shortcode_booking_form{
         public function __construct(){
             add_shortcode('ny-booking-form', [$this, 'ny_booking_shortcode_booking_form']);
         }
